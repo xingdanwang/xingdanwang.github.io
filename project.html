@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!--Google Font-->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Texturina&display=swap" rel="stylesheet">
+
+    <!---Bootstrap CSS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="./projectStyles.css">
+    
+    <title>Projects</title>
+  </head>
+
+  <body>
+    <nav id="mainNav" class="navbar navbar-expand-md navbar-dark py-0 fixed-top">
+      <!-- <a class="navbar-brand" href="index.html">HOME</a> -->
+
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#markov">MarkovTextGenerator</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#20Q">20Qs</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#snake">Snakey</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#4">Connect4</a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="#mudd">MuddAdventure</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <section class="intro">
+      <h1 class="welcome">Welcome!</h1>
+      <ul>
+        <li>Cindy Wang</li>
+        <li>Harvey Mudd College</li>
+        <li>Expected May 2023</li>
+        <li>B.S. Engineering</li>
+        <li>ciwang@g.hmc.edu</li>
+      </ul>
+
+    </section>
+    
+    
+    <section class="container-fluid px-2 pt-5" id="markov">
+      <h1 data-index="0">Markov Text Generator</h1>
+      <h2 class="text-right">a python program</h2>
+      <div class="row">
+        <div class="col-md-6 mb-sm-3">
+          <p id="brief">
+            Analyzes the input .txt file, generates a new piece of writing in the same style, with the desired word count. 
+          </p>
+          <p>
+            I inputed the file containing Alice in Wonderland as well as TED Talks into the Markov Text Generator, and this sentence is its creation using the second order Markov model. 
+          </p>
+          <img class="img-fluid" src="markov.png" alt="Markov text output">
+        </div>
+
+        <div class="col-md-6">
+          <p id="how">How is it done?</p>
+          <p>
+            The program analyzes the input text and generates a dictionary. A kth order Markov model has k consecutive words as a single key in the dictionary. The value corresponding to one key is a list of words that are possible to appear right after the key in the input text. When generating new text, the program randomly picks a word from the list corresponding to the right key. Updating the key each time continues to generate new words.  
+          </p>
+          <p>
+            The program keeps track of the words that can appear in the beginning of a sentence by putting k dollar signs in front of each sentence before generating the dictionary. 
+          </p>
+          <p>
+            Let’s look at an example using second order Markov model. The first word is the beginning of a sentence, so it's randomly generated from the list corresponding to the key: (‘$’, ‘$’). Let’s say the first word generated is: “Oh”, the second word would be generated from the list corresponding to the key: (‘$’,’Oh’). Repeating this process would then generate the text of desired length.  
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="container-fluid px-2 pt-5" id="20Q">
+      <h1 data-index="1">20 Questions</h1>
+      <h2 class="text-right">a python game</h2>
+      <div class="row">
+        <div class="col-md-6 mb-sm-3">
+          <p id="brief">
+            20 Questions is a game where the program tries to guess what object the user is thinking by asking the user questions. There can be more than 20 questions. If the program guesses wrong, it will ask the user for help learning about the object (animated or inanimated) in the user's mind, and store that information so that it will get smarter as the user plays more games. 
+          </p>
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="20.mp4" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <p id="how">How is it done?</p>
+          <p>
+            The basic idea of the game is that when the user inputs "yes" to a question, the program looks at the left tree, and when the input is "no", it looks at the right tree. Whenever reaches a leaf, the program proposes the leaf value as its guess.  
+          </p>
+          <p>
+            Without loading a tree from file, the program starts with the default binary tree, which contains the node value: "Is it bigger than a breadbox?" and the left child value is the guess for when the user answers "yes": "an elephant" and the right child value for when the user says "no": "a mouse". If the program doesn't guess the word the user is thinking, it takes the user's inputs of a new question and a new word, add them to the tree. The program can save this new tree by converting it to a string and write it in a file.
+          </p>
+          <p>
+            If the user decides to load a tree, the program will read the file containing its string representation and convert that to a binary tree object to start the game. 
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-fluid px-2 pt-5" id="snake">
+      <h1  data-index="2">Snakey Game</h1>
+      <h2 class="text-right">a java game</h2>
+      <div class="row">
+        <div class="col-md-6 mb-sm-3">
+          <p id="brief">
+            Implemented crucial methods in a large Java codebase. Implemented the classic snake game, then methods to allow the snake to reverse direction, and an AI version of the game where the snake knows where to go to find food. 
+          </p>
+          <p>
+            This video was recorded in AI mode.
+          </p>
+        </div>
+
+        <div class="col-md-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="snake.mp4" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container-fluid px-2 pt-5" id="4">
+      <h1  data-index="3">Connect 4</h1>
+      <h2 class="text-right">a python game</h2>
+      <div class="row">
+        <div class="col-md-6 mb-sm-3">
+          <p id="brief">
+            The player plays Connect 4 against the computer with 5 levels of difficulties to choose from. Connect 4 is a game where two players drop discs into a seven-column, six-row grid. When four discs connects horizontally, vertically, or diagonally, that player wins. 
+          </p>
+          <p>
+            I chose level 5 difficulty, my discs are represented as X and the program's as O. Even though Connect 4 is proven to be a game where the first player can always win, I lost to the program when played first.  
+          </p>
+          
+        </div>
+
+        <div class="col-md-6">
+          <img class="img-fluid sm" src="1.png" alt="Connect 4 game board">
+          <img class="img-fluid sm" src="end.png" alt="Connect 4 game board">
+        <div> 
+
+      </div>
+    </section>
+
+    <section class="container-fluid px-2 pt-5" id="4">
+      <h1  data-index="4" id="mudd">Mudd Adventure</h1>
+      <h2 class="text-right">a Vpython game</h2>
+      <div class="row">
+        <div class="col-md-6 mb-sm-3">
+          <p id="brief">
+            Codesigned the game with two friends, an exploratory game filled with surprises. Implemented real world physics with the camera focusing on the player. 
+          </p>
+          <p>
+            The building is inspired by the style of Harvey Mudd buildings. There are two stair cases to take, and along the way, some aliens who would kill you if you run into them. If you choose to take the left stair, you'll be pranked and fall all the way through the floating Mudd island. On the other hand, the right stair leads you to the roof, which is breaking the Honor Code. However, once you're on the roof, you're given the super power to kill the alien who has been constantly causing disorder, which would then make yourself a hero.  
+          </p>
+          
+        </div>
+
+        <div class="col-md-6">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="mudd_adventure.mp4" frameborder="0" allowfullscreen></iframe>
+          </div>
+        <div> 
+
+      </div>
+    </section>
+
+    <script src="./project.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+      $(function () {
+        $(document).scroll(function(){
+          var $nav = $("#mainNav");
+          $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height()); 
+        })
+      })
+    </script>
+  </body>
+</html>
+
+
+ 
